@@ -1,0 +1,131 @@
+﻿<Window
+    x:Class="Practice19.ChangeNote"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Practice19"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Изменить запись"
+    Width="285"
+    Height="325"
+    Loaded="Window_Loaded"
+    mc:Ignorable="d">
+    <Grid>
+        <Label
+            Margin="10,10,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Номер пункта" />
+        <Label
+            Margin="10,41,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Дата перечисления" />
+        <Label
+            Margin="10,72,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Организация - получатель" />
+        <Label
+            Margin="10,103,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Адрес" />
+        <Label
+            Margin="10,134,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Коммерческая" />
+        <Label
+            Margin="10,165,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Вид затрат перечисления" />
+        <Label
+            Margin="10,196,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Сумма перечисления" />
+        <Button
+            Width="101"
+            Margin="39,261,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="Change_Click"
+            Content="Изменить запись"
+            IsDefault="True" />
+        <Button
+            Width="75"
+            Margin="166,261,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="Exit_Click"
+            Content="Отмена"
+            IsCancel="True" />
+        <TextBox
+            x:Name="ID"
+            Width="45"
+            Height="23"
+            Margin="102,10,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            IsEnabled="False"
+            Text=""
+            TextWrapping="Wrap" />
+        <TextBox
+            x:Name="organization"
+            Width="101"
+            Height="23"
+            Margin="166,72,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Text=""
+            TextWrapping="Wrap" />
+        <TextBox
+            x:Name="address"
+            Width="147"
+            Height="23"
+            Margin="53,106,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Text=""
+            TextWrapping="Wrap" />
+        <TextBox
+            x:Name="type"
+            Width="101"
+            Height="23"
+            Margin="165,168,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Text=""
+            TextWrapping="Wrap" />
+        <TextBox
+            x:Name="Sum"
+            Width="101"
+            Height="23"
+            Margin="138,196,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Text=""
+            TextWrapping="Wrap" />
+        <CheckBox
+            x:Name="yesornot"
+            Margin="106,140,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Да" />
+        <DatePicker
+            x:Name="Data"
+            Width="107"
+            Margin="132,42,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            SelectedDateFormat="Short" />
+        <Label
+            Margin="31,227,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Все поля являются обязательными"
+            FontWeight="Bold" />
+    </Grid>
+</Window>

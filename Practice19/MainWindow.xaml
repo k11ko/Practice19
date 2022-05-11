@@ -1,0 +1,95 @@
+﻿<Window x:Class="Practice19.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Practice19"
+        mc:Ignorable="d"
+        Title="Практическая работа 19" Height="445" Width="1393" ResizeMode="NoResize" Loaded="Window_Loaded">
+
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding Update}" Key="H" Modifiers="Ctrl" />
+    </Window.InputBindings>
+
+    <Grid>
+        <Menu HorizontalAlignment="Left" Height="18" VerticalAlignment="Top" Width="280">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Выход" Click="Exit_Click"/>
+            </MenuItem>
+            <MenuItem Header="Таблица">
+                <MenuItem Header="Добавить запись" Click="AddNote_Click"/>
+                <MenuItem Header="Изменить запись" Click="ChangeNote_Click"/>
+                <MenuItem Header="Удалить запись" Click="DelNote_Click"/>
+                <Separator/>
+                <MenuItem Header="Обновить" Command="{Binding Update}" Click="MenuItem_Click"/>
+            </MenuItem>
+            <MenuItem Header="Информация" Click="Directory_Click">
+                <MenuItem Header="О программе" Click="Info_Click"/>
+                <MenuItem Header="Справочник"/>
+            </MenuItem>
+            <MenuItem Header="Пользователь">
+                <MenuItem Header="Сменить пользователя" Click="Restart_Click"/>
+            </MenuItem>
+        </Menu>
+        <DataGrid x:Name="tabl" HorizontalAlignment="Left" Height="383" Margin="10,23,0,0" VerticalAlignment="Top" Width="779" IsReadOnly="True" AutoGenerateColumns="False" ItemsSource="{Binding}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Номер пункта" Binding="{Binding НомерПункта}"/>
+                <DataGridTextColumn Header="Дата перечисления" Binding="{Binding ДатаПеречисления}"/>
+                <DataGridTextColumn Header="Организация-получатель" Binding="{Binding ОрганизацияПолучатель}"/>
+                <DataGridTextColumn Header="Адрес" Binding="{Binding Адрес}"/>
+                <DataGridTextColumn Header="Коммерческая" Binding="{Binding Коммерческая}"/>
+                <DataGridTextColumn Header="Вид затрат перечисления" Binding="{Binding ВидЗатратПеречисления}"/>
+                <DataGridTextColumn Header="Сумма перечисления" Binding="{Binding СуммаПеречисления}"/>
+                <!--<DataGridTextColumn Header="Номер пункта"/>
+                <DataGridTextColumn Header="Дата перечисления"/>
+                <DataGridTextColumn Header="Организация-получатель"/>
+                <DataGridTextColumn Header="Адрес"/>
+                <DataGridTextColumn Header="Коммерческая"/>
+                <DataGridTextColumn Header="Вид затрат перечисления"/>
+                <DataGridTextColumn Header="Сумма перечисления"/>-->
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="Addnote" Content="Добавить" HorizontalAlignment="Left" Margin="805,26,0,0" VerticalAlignment="Top" Width="75" Click="AddNote_Click"/>
+        <Button x:Name="Changenote" Content="Изменить" HorizontalAlignment="Left" Margin="805,51,0,0" VerticalAlignment="Top" Width="75" Click="ChangeNote_Click"/>
+        <Button x:Name="Delnote" Content="Удалить" HorizontalAlignment="Left" Margin="805,76,0,0" VerticalAlignment="Top" Width="75" Click="DelNote_Click"/>
+        <GroupBox x:Name="Viborka" Header="Выборка" HorizontalAlignment="Left" Height="163" Margin="896,18,0,0" VerticalAlignment="Top" Width="422">
+            <Grid>
+                <Label Content="Итоговая сумма всех перечислений" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="itogsum" HorizontalAlignment="Left" Height="23" Margin="303,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"/>
+                <Label Content="Только коммерческие организации" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+                <RadioButton x:Name="CommerceON" Content="Вкл" HorizontalAlignment="Left" Margin="218,47,0,0" VerticalAlignment="Top" Checked="CommerceON_Checked"/>
+                <Label Content="Вид затрат" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="CostType" HorizontalAlignment="Left" Height="23" Margin="83,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142"/>
+                <Button Content="Выбрать" HorizontalAlignment="Left" Margin="218,13,0,0" VerticalAlignment="Top" Width="80" Height="23" Click="itogsum_Click"/>
+                <Button Content="Выбрать" HorizontalAlignment="Left" Margin="230,75,0,0" VerticalAlignment="Top" Width="80" Height="23" Click="CostType_Click"/>
+                <RadioButton x:Name="CommerceOFF" Content="Выкл" IsChecked="True" HorizontalAlignment="Left" Margin="261,47,0,0" VerticalAlignment="Top" Checked="CommerceOFF_Checked"/>
+                <Label Content="Организации типа" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="orgtype" HorizontalAlignment="Left" Height="23" Margin="127,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <Button Content="Выбрать" HorizontalAlignment="Left" Margin="252,106,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="orgtype_Click"/>
+
+            </Grid>
+        </GroupBox>
+        <Button x:Name="View" Content="Просмотр" HorizontalAlignment="Left" Margin="805,101,0,0" VerticalAlignment="Top" Width="75" Click="View_Click"/>
+        <GroupBox x:Name="obnovlenie" Header="Обновление" HorizontalAlignment="Left" Height="230" Margin="896,186,0,0" VerticalAlignment="Top" Width="201">
+            <Grid>
+                <Label Content="Работа с номером:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="ID1" HorizontalAlignment="Left" Height="23" Margin="124,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55"/>
+                <Label Content="Адрес организации:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Width="169"/>
+                <Button Content="Обновить" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top" Width="169" Click="Query1_Click"/>
+                <TextBox x:Name="address" HorizontalAlignment="Left" Height="23" Margin="10,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169"/>
+                <Label Content="Сумма перечисления:" HorizontalAlignment="Left" Margin="10,120,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="sum" HorizontalAlignment="Left" Height="23" Margin="10,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169"/>
+                <Button Content="Обновить" HorizontalAlignment="Left" Margin="10,173,0,0" VerticalAlignment="Top" Width="169" Height="24" Click="Query2_Click"/>
+
+            </Grid>
+        </GroupBox>
+        <GroupBox x:Name="udalenie" Header="Удаление" HorizontalAlignment="Left" Height="115" Margin="1117,186,0,0" VerticalAlignment="Top" Width="201">
+            <Grid>
+                <Label Content="Введите номер пункта, &#xD;&#xA;который следует удалить:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="41"/>
+                <TextBox x:Name="ID" HorizontalAlignment="Left" Height="20" Margin="10,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
+                <Button Content="Удалить" HorizontalAlignment="Left" Margin="86,56,0,0" VerticalAlignment="Top" Width="75" Click="DeletID_Click"/>
+
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>
